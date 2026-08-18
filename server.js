@@ -22,6 +22,7 @@ const styles = `
             --accent: #ffaf1a;
             --accent-hover: #ffc04d;
             --success: #4ade80;
+            --error: #f87171;
         }
 
         * {
@@ -36,6 +37,7 @@ const styles = `
 
         body {
             min-height: 100vh;
+
             background:
                 radial-gradient(
                     circle at 50% -20%,
@@ -43,7 +45,9 @@ const styles = `
                     transparent 45%
                 ),
                 var(--bg);
+
             color: var(--text);
+
             font-family:
                 Inter,
                 -apple-system,
@@ -53,6 +57,7 @@ const styles = `
                 Helvetica,
                 Arial,
                 sans-serif;
+
             line-height: 1.6;
         }
 
@@ -67,32 +72,42 @@ const styles = `
 
         .navbar {
             width: 100%;
+
             border-bottom: 1px solid var(--border);
+
             background: rgba(8, 10, 13, 0.82);
+
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
+
             position: sticky;
             top: 0;
+
             z-index: 10;
         }
 
         .nav-inner {
             width: min(1100px, calc(100% - 40px));
+
             min-height: 72px;
+
             margin: 0 auto;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 24px;
         }
 
         .brand {
             display: flex;
             align-items: center;
+
             gap: 12px;
 
             font-weight: 800;
+
             letter-spacing: 0.08em;
         }
 
@@ -105,6 +120,7 @@ const styles = `
             object-fit: contain;
 
             background: rgba(255, 255, 255, 0.04);
+
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -118,6 +134,7 @@ const styles = `
             border-radius: 10px;
 
             background: rgba(255, 175, 26, 0.08);
+
             border: 1px solid rgba(255, 175, 26, 0.3);
 
             color: var(--accent);
@@ -128,12 +145,14 @@ const styles = `
 
         .brand-name {
             font-size: 15px;
+
             letter-spacing: 0.12em;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
+
             gap: 10px;
         }
 
@@ -159,17 +178,24 @@ const styles = `
 
         .nav-icon:hover {
             color: var(--text);
+
             background: var(--surface);
+
             border-color: var(--border);
+
             transform: translateY(-1px);
         }
 
         .nav-icon svg {
             width: 19px;
             height: 19px;
+
             stroke: currentColor;
+
             fill: none;
+
             stroke-width: 1.8;
+
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -180,6 +206,7 @@ const styles = `
 
         .container {
             width: min(1000px, calc(100% - 40px));
+
             margin: 0 auto;
         }
 
@@ -199,17 +226,20 @@ const styles = `
 
         .hero-content {
             width: 100%;
+
             text-align: center;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
+
             gap: 8px;
 
             padding: 7px 12px;
 
             border: 1px solid rgba(255, 175, 26, 0.22);
+
             border-radius: 999px;
 
             background: rgba(255, 175, 26, 0.06);
@@ -220,6 +250,7 @@ const styles = `
             font-weight: 700;
 
             letter-spacing: 0.08em;
+
             text-transform: uppercase;
 
             margin-bottom: 24px;
@@ -239,9 +270,11 @@ const styles = `
 
         h1 {
             font-size: clamp(42px, 8vw, 78px);
+
             line-height: 0.98;
 
             letter-spacing: -0.045em;
+
             font-weight: 900;
 
             margin-bottom: 22px;
@@ -255,18 +288,19 @@ const styles = `
             color: var(--muted);
 
             font-size: 18px;
+
             line-height: 1.7;
         }
 
-        /*
-         * Esta sección reemplaza el antiguo botón
-         * "Continuar".
-         */
+        /* =========================
+           INFORMATION
+        ========================= */
 
         .info-section {
             margin-top: 65px;
 
             display: grid;
+
             grid-template-columns: 1fr 1fr;
 
             gap: 18px;
@@ -306,6 +340,7 @@ const styles = `
             font-weight: 800;
 
             letter-spacing: 0.1em;
+
             text-transform: uppercase;
 
             margin-bottom: 10px;
@@ -321,6 +356,7 @@ const styles = `
             color: var(--muted);
 
             font-size: 14px;
+
             line-height: 1.75;
         }
 
@@ -334,6 +370,7 @@ const styles = `
 
         .info-point {
             display: flex;
+
             gap: 12px;
 
             padding: 15px;
@@ -366,9 +403,11 @@ const styles = `
             height: 16px;
 
             stroke: currentColor;
+
             fill: none;
 
             stroke-width: 1.8;
+
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -437,13 +476,14 @@ const styles = `
         }
 
         /* =========================
-           CALLBACK
+           ROBLOX CALLBACK
         ========================= */
 
         .callback {
             min-height: calc(100vh - 72px);
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -467,7 +507,7 @@ const styles = `
                 0 24px 80px rgba(0, 0, 0, 0.35);
         }
 
-        .success-icon {
+        .callback-icon {
             width: 68px;
             height: 68px;
 
@@ -478,18 +518,94 @@ const styles = `
 
             border-radius: 50%;
 
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .callback-icon.success {
             border: 1px solid rgba(74, 222, 128, 0.25);
 
             background: rgba(74, 222, 128, 0.08);
 
             color: var(--success);
 
-            font-size: 30px;
-            font-weight: 900;
+            box-shadow:
+                0 0 35px rgba(74, 222, 128, 0.06);
+        }
+
+        .callback-icon.error {
+            border: 1px solid rgba(248, 113, 113, 0.25);
+
+            background: rgba(248, 113, 113, 0.08);
+
+            color: var(--error);
+
+            box-shadow:
+                0 0 35px rgba(248, 113, 113, 0.06);
+        }
+
+        .callback-status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 7px 12px;
+
+            margin-bottom: 20px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+        }
+
+        .callback-status.success {
+            color: var(--success);
+
+            background: rgba(74, 222, 128, 0.07);
+
+            border: 1px solid rgba(74, 222, 128, 0.18);
+        }
+
+        .callback-status.error {
+            color: var(--error);
+
+            background: rgba(248, 113, 113, 0.07);
+
+            border: 1px solid rgba(248, 113, 113, 0.18);
+        }
+
+        .callback-status-dot {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+        }
+
+        .callback-status.success .callback-status-dot {
+            background: var(--success);
+
+            box-shadow:
+                0 0 10px rgba(74, 222, 128, 0.6);
+        }
+
+        .callback-status.error .callback-status-dot {
+            background: var(--error);
+
+            box-shadow:
+                0 0 10px rgba(248, 113, 113, 0.6);
         }
 
         .callback-card h1 {
             font-size: clamp(32px, 6vw, 46px);
+
+            line-height: 1.05;
 
             margin-bottom: 14px;
         }
@@ -499,7 +615,7 @@ const styles = `
 
             max-width: 430px;
 
-            margin: 0 auto;
+            margin: 0 auto 10px;
         }
 
         .callback-note {
@@ -516,6 +632,8 @@ const styles = `
             color: #b8bdc6;
 
             font-size: 13px;
+
+            line-height: 1.6;
         }
 
         /* =========================
@@ -540,6 +658,7 @@ const styles = `
             display: flex;
 
             justify-content: space-between;
+
             align-items: center;
 
             gap: 20px;
@@ -547,6 +666,7 @@ const styles = `
 
         .footer-links {
             display: flex;
+
             gap: 18px;
         }
 
@@ -559,6 +679,7 @@ const styles = `
         ========================= */
 
         @media (max-width: 760px) {
+
             .nav-inner {
                 min-height: 64px;
             }
@@ -573,16 +694,19 @@ const styles = `
 
             .hero {
                 min-height: auto;
+
                 padding: 70px 0;
             }
 
             .footer-inner {
                 flex-direction: column;
+
                 text-align: center;
             }
         }
 
         @media (max-width: 480px) {
+
             .container,
             .nav-inner,
             .footer-inner {
@@ -624,16 +748,19 @@ const logo = LOGO_URL
 
 const navbar = `
     <nav class="navbar">
+
         <div class="nav-inner">
 
             <a class="brand" href="/">
                 ${logo}
-                <span class="brand-name">DEVGRU</span>
+
+                <span class="brand-name">
+                    DEVGRU
+                </span>
             </a>
 
             <div class="nav-links">
 
-                <!-- Privacy Policy -->
                 <a
                     class="nav-icon"
                     href="/privacy"
@@ -641,14 +768,20 @@ const navbar = `
                     title="Política de Privacidad"
                 >
                     <svg viewBox="0 0 24 24">
-                        <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                        <rect
+                            x="5"
+                            y="3"
+                            width="14"
+                            height="18"
+                            rx="2"
+                        ></rect>
+
                         <path d="M9 8h6"></path>
                         <path d="M9 12h6"></path>
                         <path d="M9 16h4"></path>
                     </svg>
                 </a>
 
-                <!-- Terms of Service -->
                 <a
                     class="nav-icon"
                     href="/terms"
@@ -664,12 +797,15 @@ const navbar = `
                 </a>
 
             </div>
+
         </div>
+
     </nav>
 `;
 
 const footer = `
     <footer>
+
         <div class="footer-inner">
 
             <span>
@@ -678,11 +814,17 @@ const footer = `
             </span>
 
             <div class="footer-links">
-                <a href="/privacy">Privacidad</a>
-                <a href="/terms">Términos</a>
+                <a href="/privacy">
+                    Privacidad
+                </a>
+
+                <a href="/terms">
+                    Términos
+                </a>
             </div>
 
         </div>
+
     </footer>
 `;
 
@@ -692,6 +834,7 @@ const page = (title, content) => `
     <html lang="es">
 
     <head>
+
         <meta charset="UTF-8">
 
         <meta
@@ -707,6 +850,7 @@ const page = (title, content) => `
         <title>${title}</title>
 
         ${styles}
+
     </head>
 
     <body>
@@ -722,7 +866,12 @@ const page = (title, content) => `
     </html>
 `;
 
+/* =========================
+   HOME
+========================= */
+
 app.get("/", (_req, res) => {
+
     res.send(
         page(
             "DEVGRU",
@@ -734,11 +883,16 @@ app.get("/", (_req, res) => {
                         <div class="hero-content">
 
                             <div class="badge">
+
                                 <span class="badge-dot"></span>
+
                                 DEVGRU Application
+
                             </div>
 
-                            <h1>DEVGRU</h1>
+                            <h1>
+                                DEVGRU
+                            </h1>
 
                             <p class="hero-description">
                                 Aplicación oficial de DEVGRU para servicios
@@ -793,13 +947,16 @@ app.get("/", (_req, res) => {
                                     <div class="info-point">
 
                                         <div class="info-point-icon">
+
                                             <svg viewBox="0 0 24 24">
                                                 <path d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7z"></path>
                                                 <path d="M9 12l2 2 4-4"></path>
                                             </svg>
+
                                         </div>
 
                                         <div>
+
                                             <strong>
                                                 Servicios oficiales
                                             </strong>
@@ -808,6 +965,7 @@ app.get("/", (_req, res) => {
                                                 Plataforma administrada por
                                                 DEVGRU.
                                             </span>
+
                                         </div>
 
                                     </div>
@@ -815,13 +973,21 @@ app.get("/", (_req, res) => {
                                     <div class="info-point">
 
                                         <div class="info-point-icon">
+
                                             <svg viewBox="0 0 24 24">
-                                                <circle cx="12" cy="12" r="8"></circle>
+                                                <circle
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="8"
+                                                ></circle>
+
                                                 <path d="M12 8v4l3 2"></path>
                                             </svg>
+
                                         </div>
 
                                         <div>
+
                                             <strong>
                                                 Disponible en línea
                                             </strong>
@@ -830,6 +996,7 @@ app.get("/", (_req, res) => {
                                                 Acceso mediante una conexión
                                                 segura HTTPS.
                                             </span>
+
                                         </div>
 
                                     </div>
@@ -837,13 +1004,21 @@ app.get("/", (_req, res) => {
                                     <div class="info-point">
 
                                         <div class="info-point-icon">
+
                                             <svg viewBox="0 0 24 24">
-                                                <circle cx="12" cy="8" r="3"></circle>
+                                                <circle
+                                                    cx="12"
+                                                    cy="8"
+                                                    r="3"
+                                                ></circle>
+
                                                 <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"></path>
                                             </svg>
+
                                         </div>
 
                                         <div>
+
                                             <strong>
                                                 Autenticación
                                             </strong>
@@ -852,6 +1027,7 @@ app.get("/", (_req, res) => {
                                                 Preparado para integraciones
                                                 con servicios externos.
                                             </span>
+
                                         </div>
 
                                     </div>
@@ -870,6 +1046,10 @@ app.get("/", (_req, res) => {
     );
 });
 
+/* =========================
+   ROBLOX OAUTH CALLBACK
+========================= */
+
 const BOT_URL =
     process.env.BOT_URL;
 
@@ -882,6 +1062,7 @@ app.get(
         req,
         res
     ) => {
+
         const code =
             req.query.code;
 
@@ -894,55 +1075,111 @@ app.get(
         const errorDescription =
             req.query.error_description;
 
-        if (
-            error
-        ) {
+        /* =========================
+           ROBLOX CANCELÓ
+        ========================= */
+
+        if (error) {
+
             res.status(400).send(
                 page(
                     "Verificación cancelada - DEVGRU",
                     `
-                    <div class="card">
-                        <div class="status error">
-                            Verificación cancelada
-                        </div>
+                        <main class="callback">
 
-                        <h1>Verificación cancelada</h1>
+                            <div class="container">
 
-                        <p>
-                            La autorización de Roblox no fue completada.
-                        </p>
+                                <div class="callback-card">
 
-                        <p>
-                            Puedes cerrar esta ventana y volver a Discord.
-                        </p>
-                    </div>
+                                    <div class="callback-icon error">
+                                        ×
+                                    </div>
+
+                                    <div class="callback-status error">
+
+                                        <span class="callback-status-dot"></span>
+
+                                        Verificación cancelada
+
+                                    </div>
+
+                                    <h1>
+                                        Verificación cancelada
+                                    </h1>
+
+                                    <p>
+                                        La autorización de Roblox
+                                        no fue completada.
+                                    </p>
+
+                                    <div class="callback-note">
+                                        Puedes cerrar esta ventana y
+                                        volver a Discord.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </main>
                     `
                 )
             );
 
             return;
         }
+
+        /* =========================
+           DATOS FALTANTES
+        ========================= */
 
         if (
             !code ||
             !state
         ) {
+
             res.status(400).send(
                 page(
                     "Solicitud inválida - DEVGRU",
                     `
-                    <div class="card">
-                        <div class="status error">
-                            Solicitud inválida
-                        </div>
+                        <main class="callback">
 
-                        <h1>Solicitud inválida</h1>
+                            <div class="container">
 
-                        <p>
-                            Roblox no proporcionó los datos necesarios
-                            para completar la verificación.
-                        </p>
-                    </div>
+                                <div class="callback-card">
+
+                                    <div class="callback-icon error">
+                                        !
+                                    </div>
+
+                                    <div class="callback-status error">
+
+                                        <span class="callback-status-dot"></span>
+
+                                        Solicitud inválida
+
+                                    </div>
+
+                                    <h1>
+                                        Solicitud inválida
+                                    </h1>
+
+                                    <p>
+                                        Roblox no proporcionó los datos
+                                        necesarios para completar
+                                        la verificación.
+                                    </p>
+
+                                    <div class="callback-note">
+                                        Puedes cerrar esta ventana y
+                                        volver a Discord.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </main>
                     `
                 )
             );
@@ -950,10 +1187,15 @@ app.get(
             return;
         }
 
+        /* =========================
+           VARIABLES FALTANTES
+        ========================= */
+
         if (
             !BOT_URL ||
             !ROBLOX_CALLBACK_API_KEY
         ) {
+
             console.error(
                 "[ROBLOX OAUTH] Faltan BOT_URL o ROBLOX_CALLBACK_API_KEY."
             );
@@ -962,17 +1204,43 @@ app.get(
                 page(
                     "Error - DEVGRU",
                     `
-                    <div class="card">
-                        <div class="status error">
-                            Error interno
-                        </div>
+                        <main class="callback">
 
-                        <h1>Error interno</h1>
+                            <div class="container">
 
-                        <p>
-                            No se pudo completar la verificación.
-                        </p>
-                    </div>
+                                <div class="callback-card">
+
+                                    <div class="callback-icon error">
+                                        !
+                                    </div>
+
+                                    <div class="callback-status error">
+
+                                        <span class="callback-status-dot"></span>
+
+                                        Error interno
+
+                                    </div>
+
+                                    <h1>
+                                        Error interno
+                                    </h1>
+
+                                    <p>
+                                        No se pudo completar la
+                                        verificación.
+                                    </p>
+
+                                    <div class="callback-note">
+                                        Puedes cerrar esta ventana y
+                                        volver a Discord.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </main>
                     `
                 )
             );
@@ -980,7 +1248,12 @@ app.get(
             return;
         }
 
+        /* =========================
+           COMUNICACIÓN CON EL BOT
+        ========================= */
+
         try {
+
             const response =
                 await fetch(
                     `${BOT_URL}/internal/roblox/callback`,
@@ -1010,9 +1283,14 @@ app.get(
                         () => ({})
                     );
 
+            /* =========================
+               BOT RECHAZÓ
+            ========================= */
+
             if (
                 !response.ok
             ) {
+
                 console.error(
                     "[ROBLOX OAUTH] Bot rechazó el callback:",
                     response.status,
@@ -1023,22 +1301,44 @@ app.get(
                     page(
                         "Error de verificación - DEVGRU",
                         `
-                        <div class="card">
-                            <div class="status error">
-                                Verificación fallida
-                            </div>
+                            <main class="callback">
 
-                            <h1>No se pudo completar la verificación</h1>
+                                <div class="container">
 
-                            <p>
-                                Ocurrió un problema al procesar
-                                tu cuenta de Roblox.
-                            </p>
+                                    <div class="callback-card">
 
-                            <p>
-                                Puedes cerrar esta ventana y volver a Discord.
-                            </p>
-                        </div>
+                                        <div class="callback-icon error">
+                                            ×
+                                        </div>
+
+                                        <div class="callback-status error">
+
+                                            <span class="callback-status-dot"></span>
+
+                                            Verificación fallida
+
+                                        </div>
+
+                                        <h1>
+                                            No se pudo completar
+                                            la verificación
+                                        </h1>
+
+                                        <p>
+                                            Ocurrió un problema al procesar
+                                            tu cuenta de Roblox.
+                                        </p>
+
+                                        <div class="callback-note">
+                                            Puedes cerrar esta ventana y
+                                            volver a Discord.
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </main>
                         `
                     )
                 );
@@ -1046,30 +1346,57 @@ app.get(
                 return;
             }
 
+            /* =========================
+               ÉXITO
+            ========================= */
+
             res.status(200).send(
                 page(
                     "Cuenta vinculada - DEVGRU",
                     `
-                    <div class="card">
-                        <div class="status success">
-                            Verificación completada
-                        </div>
+                        <main class="callback">
 
-                        <h1>Cuenta vinculada correctamente</h1>
+                            <div class="container">
 
-                        <p>
-                            Tu cuenta de Roblox fue verificada correctamente.
-                        </p>
+                                <div class="callback-card">
 
-                        <p>
-                            Puedes cerrar esta ventana y volver a Discord.
-                        </p>
-                    </div>
+                                    <div class="callback-icon success">
+                                        ✓
+                                    </div>
+
+                                    <div class="callback-status success">
+
+                                        <span class="callback-status-dot"></span>
+
+                                        Verificación completada
+
+                                    </div>
+
+                                    <h1>
+                                        Cuenta vinculada correctamente
+                                    </h1>
+
+                                    <p>
+                                        Tu cuenta de Roblox fue verificada
+                                        correctamente.
+                                    </p>
+
+                                    <div class="callback-note">
+                                        Puedes cerrar esta ventana y
+                                        volver a Discord.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </main>
                     `
                 )
             );
 
         } catch (error) {
+
             console.error(
                 "[ROBLOX OAUTH] Error comunicando con DEVGRU-Bot:",
                 error
@@ -1079,22 +1406,44 @@ app.get(
                 page(
                     "Error de verificación - DEVGRU",
                     `
-                    <div class="card">
-                        <div class="status error">
-                            Error de conexión
-                        </div>
+                        <main class="callback">
 
-                        <h1>No se pudo completar la verificación</h1>
+                            <div class="container">
 
-                        <p>
-                            No fue posible comunicarse con el sistema
-                            de verificación.
-                        </p>
+                                <div class="callback-card">
 
-                        <p>
-                            Puedes cerrar esta ventana y volver a Discord.
-                        </p>
-                    </div>
+                                    <div class="callback-icon error">
+                                        ×
+                                    </div>
+
+                                    <div class="callback-status error">
+
+                                        <span class="callback-status-dot"></span>
+
+                                        Error de conexión
+
+                                    </div>
+
+                                    <h1>
+                                        No se pudo completar
+                                        la verificación
+                                    </h1>
+
+                                    <p>
+                                        No fue posible comunicarse con
+                                        el sistema de verificación.
+                                    </p>
+
+                                    <div class="callback-note">
+                                        Puedes cerrar esta ventana y
+                                        volver a Discord.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </main>
                     `
                 )
             );
@@ -1102,7 +1451,12 @@ app.get(
     }
 );
 
+/* =========================
+   PRIVACY POLICY
+========================= */
+
 app.get("/privacy", (_req, res) => {
+
     res.send(
         page(
             "Política de Privacidad - DEVGRU",
@@ -1114,8 +1468,11 @@ app.get("/privacy", (_req, res) => {
                         <div class="legal-header">
 
                             <div class="badge">
+
                                 <span class="badge-dot"></span>
+
                                 Legal
+
                             </div>
 
                             <h1>
@@ -1138,8 +1495,8 @@ app.get("/privacy", (_req, res) => {
                             <p>
                                 DEVGRU utiliza servicios de autenticación
                                 compatibles con Roblox OAuth para permitir
-                                futuras funciones de autenticación e
-                                integración dentro de los servicios de DEVGRU.
+                                funciones de autenticación e integración
+                                dentro de los servicios de DEVGRU.
                             </p>
 
                             <h2>
@@ -1219,7 +1576,12 @@ app.get("/privacy", (_req, res) => {
     );
 });
 
+/* =========================
+   TERMS OF SERVICE
+========================= */
+
 app.get("/terms", (_req, res) => {
+
     res.send(
         page(
             "Términos de Servicio - DEVGRU",
@@ -1231,8 +1593,11 @@ app.get("/terms", (_req, res) => {
                         <div class="legal-header">
 
                             <div class="badge">
+
                                 <span class="badge-dot"></span>
+
                                 Legal
+
                             </div>
 
                             <h1>
@@ -1332,7 +1697,12 @@ app.get("/terms", (_req, res) => {
     );
 });
 
+/* =========================
+   404
+========================= */
+
 app.use((_req, res) => {
+
     res.status(404).send(
         page(
             "404 - DEVGRU",
@@ -1343,8 +1713,16 @@ app.use((_req, res) => {
 
                         <div class="callback-card">
 
-                            <div class="success-icon">
+                            <div class="callback-icon error">
                                 ?
+                            </div>
+
+                            <div class="callback-status error">
+
+                                <span class="callback-status-dot"></span>
+
+                                Error 404
+
                             </div>
 
                             <h1>
@@ -1356,15 +1734,8 @@ app.use((_req, res) => {
                                 o ya no está disponible.
                             </p>
 
-                            <div class="actions">
-
-                                <a
-                                    class="button button-primary"
-                                    href="/"
-                                >
-                                    Volver a DEVGRU
-                                </a>
-
+                            <div class="callback-note">
+                                Regresa a la página principal de DEVGRU.
                             </div>
 
                         </div>
@@ -1377,8 +1748,16 @@ app.use((_req, res) => {
     );
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(
-        `DEVGRU Web escuchando en el puerto ${PORT}`
-    );
-});
+/* =========================
+   SERVER
+========================= */
+
+app.listen(
+    PORT,
+    "0.0.0.0",
+    () => {
+        console.log(
+            `DEVGRU Web escuchando en el puerto ${PORT}`
+        );
+    }
+);
