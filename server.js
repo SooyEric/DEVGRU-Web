@@ -870,44 +870,237 @@ app.get("/", (_req, res) => {
     );
 });
 
-app.get("/roblox/callback", (_req, res) => {
-    res.send(
-        page(
-            "Solicitud recibida - DEVGRU",
-            `
-                <main class="callback">
+const BOT_URL =
+    process.env.BOT_URL;
 
-                    <div class="container">
+const ROBLOX_CALLBACK_API_KEY =
+    process.env.ROBLOX_CALLBACK_API_KEY;
 
-                        <div class="callback-card">
+app.get(
+    "/roblox/callback",
+    async (
+        req,
+        res
+    ) => {
+        const code =
+            req.query.code;
 
-                            <div class="success-icon">
-                                ✓
-                            </div>
+        const state =
+            req.query.state;
 
-                            <h1>
-                                Solicitud recibida
-                            </h1>
+        const error =
+            req.query.error;
 
-                            <p>
-                                La solicitud de autorización de DEVGRU
-                                fue recibida correctamente.
-                            </p>
+        const errorDescription =
+            req.query.error_description;
 
-                            <div class="callback-note">
-                                Esta página forma parte del sistema de
-                                autenticación de DEVGRU.
-                            </div>
-
+        if (
+            error
+        ) {
+            res.status(400).send(
+                page(
+                    "Verificación cancelada - DEVGRU",
+                    `
+                    <div class="card">
+                        <div class="status error">
+                            Verificación cancelada
                         </div>
 
-                    </div>
+                        <h1>Verificación cancelada</h1>
 
-                </main>
-            `
-        )
-    );
-});
+                        <p>
+                            La autorización de Roblox no fue completada.
+                        </p>
+
+                        <p>
+                            Puedes cerrar esta ventana y volver a Discord.
+                        </p>
+                    </div>
+                    `
+                )
+            );
+
+            return;
+        }
+
+        if (
+            !code ||
+            !state
+        ) {
+            res.status(400).send(
+                page(
+                    "Solicitud inválida - DEVGRU",
+                    `
+                    <div class="card">
+                        <div class="status error">
+                            Solicitud inválida
+                        </div>
+
+                        <h1>Solicitud inválida</h1>
+
+                        <p>
+                            Roblox no proporcionó los datos necesarios
+                            para completar la verificación.
+                        </p>
+                    </div>
+                    `
+                )
+            );
+
+            return;
+        }
+
+        if (
+            !BOT_URL ||
+            !ROBLOX_CALLBACK_API_KEY
+        ) {
+            console.error(
+                "[ROBLOX OAUTH] Faltan BOT_URL o ROBLOX_CALLBACK_API_KEY."
+            );
+
+            res.status(500).send(
+                page(
+                    "Error - DEVGRU",
+                    `
+                    <div class="card">
+                        <div class="status error">
+                            Error interno
+                        </div>
+
+                        <h1>Error interno</h1>
+
+                        <p>
+                            No se pudo completar la verificación.
+                        </p>
+                    </div>
+                    `
+                )
+            );
+
+            return;
+        }
+
+        try {
+            const response =
+                await fetch(
+                    `${BOT_URL}/internal/roblox/callback`,
+                    {
+                        method:
+                            "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            Authorization:
+                                `Bearer ${ROBLOX_CALLBACK_API_KEY}`
+                        },
+
+                        body:
+                            JSON.stringify({
+                                code,
+                                state
+                            })
+                    }
+                );
+
+            const result =
+                await response.json()
+                    .catch(
+                        () => ({})
+                    );
+
+            if (
+                !response.ok
+            ) {
+                console.error(
+                    "[ROBLOX OAUTH] Bot rechazó el callback:",
+                    response.status,
+                    result
+                );
+
+                res.status(500).send(
+                    page(
+                        "Error de verificación - DEVGRU",
+                        `
+                        <div class="card">
+                            <div class="status error">
+                                Verificación fallida
+                            </div>
+
+                            <h1>No se pudo completar la verificación</h1>
+
+                            <p>
+                                Ocurrió un problema al procesar
+                                tu cuenta de Roblox.
+                            </p>
+
+                            <p>
+                                Puedes cerrar esta ventana y volver a Discord.
+                            </p>
+                        </div>
+                        `
+                    )
+                );
+
+                return;
+            }
+
+            res.status(200).send(
+                page(
+                    "Cuenta vinculada - DEVGRU",
+                    `
+                    <div class="card">
+                        <div class="status success">
+                            Verificación completada
+                        </div>
+
+                        <h1>Cuenta vinculada correctamente</h1>
+
+                        <p>
+                            Tu cuenta de Roblox fue verificada correctamente.
+                        </p>
+
+                        <p>
+                            Puedes cerrar esta ventana y volver a Discord.
+                        </p>
+                    </div>
+                    `
+                )
+            );
+
+        } catch (error) {
+            console.error(
+                "[ROBLOX OAUTH] Error comunicando con DEVGRU-Bot:",
+                error
+            );
+
+            res.status(500).send(
+                page(
+                    "Error de verificación - DEVGRU",
+                    `
+                    <div class="card">
+                        <div class="status error">
+                            Error de conexión
+                        </div>
+
+                        <h1>No se pudo completar la verificación</h1>
+
+                        <p>
+                            No fue posible comunicarse con el sistema
+                            de verificación.
+                        </p>
+
+                        <p>
+                            Puedes cerrar esta ventana y volver a Discord.
+                        </p>
+                    </div>
+                    `
+                )
+            );
+        }
+    }
+);
 
 app.get("/privacy", (_req, res) => {
     res.send(
